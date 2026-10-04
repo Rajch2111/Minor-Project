@@ -25,6 +25,7 @@ from app.recommendation import recommend_alumni
 from app.skill_gap import analyze_skill_gap
 from app.resume_parser import parse_resume, extract_text
 from app.ats_scorer import ats_score
+from app.analytics import compute_analytics
 from fastapi import UploadFile, File, Form
 
 
@@ -77,3 +78,8 @@ async def ats_score_endpoint(
         return {"success": True, "analysis": ats_score(text, job_description)}
     except ValueError as e:
         return {"success": False, "error": str(e)}
+
+
+@app.get("/analytics")
+def analytics():
+    return compute_analytics()
