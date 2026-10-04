@@ -22,6 +22,7 @@ def root():
 
 
 from app.recommendation import recommend_alumni
+from app.skill_gap import analyze_skill_gap
 
 
 @app.get("/health")
@@ -45,3 +46,8 @@ def recommend(skills: str, top_n: int = 5):
             for _, row in results.iterrows()
         ],
     }
+
+
+@app.get("/skill-gap")
+def skill_gap(target_role: str, skills: str):
+    return analyze_skill_gap(target_role, skills)
