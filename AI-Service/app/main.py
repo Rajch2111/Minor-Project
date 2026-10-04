@@ -23,6 +23,9 @@ def root():
 
 from app.recommendation import recommend_alumni
 from app.skill_gap import analyze_skill_gap
+from app.resume_parser import parse_resume, extract_text
+from app.ats_scorer import ats_score
+from fastapi import UploadFile, File, Form
 
 
 @app.get("/health")
@@ -51,3 +54,26 @@ def recommend(skills: str, top_n: int = 5):
 @app.get("/skill-gap")
 def skill_gap(target_role: str, skills: str):
     return analyze_skill_gap(target_role, skills)
+
+
+@app.post("/parse-resume")
+async def parse_resume_endpoint(file: UploadFile = File(...)):
+    content = await file.read()
+    try:
+        parsed = parse_resume(file.filename, content)
+        return {"success": True, "data": parsed}
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
+
+
+@app.post("/ats-score")
+async def ats_score_endpoint(
+    file: UploadFile = File(...),
+    job_description: str = Form(default=""),
+):
+    content = await file.read()
+    try:
+        text = extract_text(file.filename, content)
+        return {"success": True, "analysis": ats_score(text, job_description)}
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
