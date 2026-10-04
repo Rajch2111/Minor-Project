@@ -26,6 +26,7 @@ from app.skill_gap import analyze_skill_gap
 from app.resume_parser import parse_resume, extract_text
 from app.ats_scorer import ats_score
 from app.analytics import compute_analytics
+from app.rag import ask
 from fastapi import UploadFile, File, Form
 
 
@@ -83,3 +84,8 @@ async def ats_score_endpoint(
 @app.get("/analytics")
 def analytics():
     return compute_analytics()
+
+
+@app.get("/chat")
+def chat(question: str):
+    return ask(question)
