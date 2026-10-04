@@ -21,6 +21,27 @@ def root():
     return {"message": "AlumniNet AI Service running"}
 
 
+from app.recommendation import recommend_alumni
+
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "service": "ai-service"}
+
+
+@app.get("/recommend")
+def recommend(skills: str, top_n: int = 5):
+    results = recommend_alumni(skills, top_n=top_n)
+    return {
+        "skills": skills,
+        "recommendations": [
+            {
+                "alumni_id": row["alumni_id"],
+                "name": row["name"],
+                "role": row["role"],
+                "industry": row["industry"],
+                "score": round(float(row["score"]), 4),
+            }
+            for _, row in results.iterrows()
+        ],
+    }

@@ -1,0 +1,11 @@
+alumni_id,name,skills,role,industry,experience_years
+A101,Rohan Mehta,"Python, Machine Learning, NLP, Deep Learning",AI Engineer,IT,4
+A102,Priya Sharma,"Java, Spring Boot, SQL, REST API",Backend Developer,IT,3
+A103,Amit Verma,"Python, Data Science, Machine Learning, Pandas",Data Scientist,IT,5
+A104,Neha Patel,"React, Node.js, MongoDB, Express",Full Stack Developer,Software,3
+A105,Kunal Singh,"Python, RAG, NLP, LangChain, LLM",AI Engineer,IT,2
+A106,Sneha Reddy,"Java, SQL, Cloud, AWS",Cloud Engineer,IT,4
+A107,Arjun Nair,"React, JavaScript, Tailwind, CSS",Frontend Developer,Software,2
+A108,Divya Iyer,"Python, Machine Learning, RAG, NLP",ML Engineer,IT,3
+A109,Vikram Joshi,"C++, DSA, System Design, Algorithms",Software Engineer,Tech,5
+A110,Pooja Das,"Django, Python, PostgreSQL, REST API",Backend Developer,IT,3
