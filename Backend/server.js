@@ -33,6 +33,7 @@ const alumniRoutes = require('./routes/alumniRoutes');
 const donationRoutes = require('./routes/donationRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
+const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
 
@@ -125,6 +126,7 @@ app.use('/api/alumni', alumniRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/resume', resumeRoutes);
+app.use('/api/ai', aiRoutes);
 
 // ─── ERROR HANDLING ───────────────────────────────────────────────
 app.use(notFoundHandler);
